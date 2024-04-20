@@ -1,16 +1,9 @@
-/*
+
  
- Problem Statement
- We are given a Logs table structured as:
- 
- Column Name	Type
- id	int
- num	varchar
- The id column is the primary key and is an autoincrement column.
- 
- Our task is to write an SQL query to find all numbers that appear at least three times 
- consecutively. We can return the result table in any order.
- */
+Our task is to write an SQL query to find all numbers that appear at least three times consecutively.
+
+
+```sql 
 WITH consecutive_group AS (
     SELECT
         num,
@@ -32,3 +25,4 @@ FROM
     consecutive_group
 WHERE
     is_valid = 1
+```
