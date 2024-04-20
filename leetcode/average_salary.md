@@ -36,20 +36,31 @@ INSERT INTO employee (employee_id, department_id) VALUES
 - Query SQL
 ```
 
-select pay_date, department_id , 
-case 
- when month_dep_avg >  month_avg then 'higher'
- when month_dep_avg <  month_avg then 'lower'
- else 'same'
-end as comparison from (
-select  pay_date , month_dep_avg , department_id , avg(month_dep_avg) over(partition by pay_date) as month_avg from (
-select s.pay_date as pay_date , avg(s.amount) as month_dep_avg, e.department_id from 
-(select date_format(pay_date,'%Y-%m') as pay_date , employee_id , amount  from salary 
-) s left join employee e 
-on s.employee_id = e.employee_id
-group by  pay_date , department_id
-) t
-) t2 order by pay_date desc 
+SELECT pay_date,
+       department_id,
+       CASE
+           WHEN month_dep_avg > month_avg THEN 'higher'
+           WHEN month_dep_avg < month_avg THEN 'lower'
+           ELSE 'same'
+       END AS comparison
+FROM
+  (SELECT pay_date,
+          month_dep_avg,
+          department_id,
+          avg(month_dep_avg) over(PARTITION BY pay_date) AS month_avg
+   FROM
+     (SELECT s.pay_date AS pay_date,
+             avg(s.amount) AS month_dep_avg,
+             e.department_id
+      FROM
+        (SELECT date_format(pay_date, '%Y-%m') AS pay_date,
+                employee_id,
+                amount
+         FROM salary) s
+      LEFT JOIN employee e ON s.employee_id = e.employee_id
+      GROUP BY pay_date,
+               department_id) t) t2
+ORDER BY pay_date DESC
 
 ```
 
