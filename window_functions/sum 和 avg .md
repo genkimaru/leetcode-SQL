@@ -1,4 +1,5 @@
-## 累加sum() over( partition by  order by )
+## 分区累加sum() over( partition by  order by )
+## 分区平均avg() over( partition by  order by )
 
 *  累加
 ```sql
@@ -40,3 +41,18 @@ mysql> select id , num , sum(num) over(partition by ntile_number ) from ( select
 +------+------+-------------------------------------------+
 
 ```
+
+## **定义窗口大小**
+>窗口函数中，ROWS后面可以接的参数主要有以下几种：
+
+> *  BETWEEN n PRECEDING AND m FOLLOWING: 这种形式指定了窗口的大小为当前行向前n行和向后m行的范围。例如，ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING表示窗口包括当前行和前两行以及后两行共5行。
+
+> *  BETWEEN n PRECEDING AND CURRENT ROW: 这种形式指定了窗口的大小为当前行向前n行的范围。例如，ROWS BETWEEN 2 PRECEDING AND CURRENT ROW表示窗口包括当前行和前两行共3行。
+
+> *  BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW: 这种形式指定了窗口的大小为从开头到当前行的范围。例如，ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW表示窗口包括从开头到当前行的所有行。
+
+> *  BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING: 这种形式指定了窗口的大小为从当前行到末尾的范围。例如，ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING表示窗口包括从当前行到末尾的所有行。
+
+
+* 例子
+sum() over( partition by  order by ) ROWS BETWEEN 2 preceding AND CURRENT ROW
