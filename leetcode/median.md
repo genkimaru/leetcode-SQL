@@ -1,4 +1,4 @@
-```
+```sql
 -- Create the Numbers table
 CREATE TABLE Numbers (
     Number INT,
@@ -14,7 +14,7 @@ INSERT INTO Numbers (Number, Frequency) VALUES (3, 4);
 
 - Query SQL
 
-```
+```sql
 with t1 as(
 select *,
 sum(frequency) over(order by number) as cum_sum, (sum(frequency) over())/2 as middle

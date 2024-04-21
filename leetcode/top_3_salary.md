@@ -1,4 +1,4 @@
-```
+```sql
 -- Creation Table SQL for Department
 CREATE TABLE Department (
     Id INT PRIMARY KEY,
@@ -30,7 +30,7 @@ INSERT INTO Employee (Id, Name, Salary, DepartmentId) VALUES
 
 ```
 - SQL Query
-```
+```sql
 SELECT employee,
        salary,
        department

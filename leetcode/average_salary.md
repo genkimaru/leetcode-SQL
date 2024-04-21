@@ -1,6 +1,6 @@
  
  -  Create salary table and  Insert data into salary table
-```
+```sql
 CREATE TABLE salary (
     id INT,
     employee_id INT,
@@ -34,7 +34,7 @@ INSERT INTO employee (employee_id, department_id) VALUES
 ----
 
 - Query SQL
-```
+```sql
 
 SELECT pay_date,
        department_id,

@@ -1,7 +1,7 @@
 
 Write a SQL to get the cumulative sum of an employee's salary over a period of 3 months but exclude the most recent month.
 
-```
+```sql
 CREATE TABLE EmployeeSalary (
     Id INT,
     Month INT,
@@ -20,7 +20,7 @@ INSERT INTO EmployeeSalary (Id, Month, Salary) VALUES
 
 ```
 
-```
+```sql
 with t1 as (
 select * , max(month) over(partition by id) as recent_month from EmployeeSalary
 )

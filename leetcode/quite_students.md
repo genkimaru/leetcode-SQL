@@ -1,4 +1,4 @@
-```
+```sql
 -- Create Student table
 CREATE TABLE Student (
     student_id INT,
