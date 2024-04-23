@@ -72,3 +72,7 @@ FROM
 WHERE rk = 1
 GROUP BY group_id
 ```
+
+- summary
+> - 使用 union all将表由宽表分成窄表
+> - 使用rank窗口函数来取不同分组的数据
